@@ -2,7 +2,7 @@
   <div id="head">
     <div id="top">
       <div id="top_left">
-        <img width="50%" src="../image/logos.png">
+        <img width="50%" src="/static/logos.png">
       </div>
       <div id="top_right">
       </div>
