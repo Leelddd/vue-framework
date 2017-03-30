@@ -4,7 +4,9 @@
 
 ```shell
 npm install
-npm run dev
+npm run dev // 日常开发
+
+npm run build // 打包发布，路径可在 config/index.js 下面更改
 ```
 
 ## 相关工具
