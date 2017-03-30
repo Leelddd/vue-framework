@@ -1,0 +1,74 @@
+<template>
+  <div id="main" class="open">
+    <app-head :status="status"></app-head>
+    <router-view class="open"></router-view>
+    <app-foot></app-foot>
+  </div>
+</template>
+
+<script>
+  import AppHead from './components/AppHead.vue'
+  import AppShow from './components/AppShow.vue'
+  import AppFoot from './components/AppFoot.vue'
+  export default {
+    data () {
+      return {
+        status: false
+      }
+    },
+    components: {
+      AppHead,
+      AppShow,
+      AppFoot
+    }
+  }
+</script>
+
+<style>
+  @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+  .open:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+
+  #main {
+    position: relative;
+    height: auto;
+    min-height:600px
+  }
+
+  .left {
+    float: left;
+    width: 55%;
+    margin-left: 5%;
+  }
+
+  .right {
+    float: right;
+    width: 30%;
+    margin-right: 5%;
+    background-color: whitesmoke;
+    padding-left: 2%;
+    font-family: Consolas,serif;
+  }
+
+  .content {
+    font-size: 14px;
+  }
+
+  .head {
+    font-family: GillSansRegular, "Gill Sans MT", "Gill Sans", Helvetica, Arial, sans-serif;
+    font-size: 26px;
+    font-weight: bold;
+  }
+
+  .second-head {
+    font-family: GillSansRegular, "Gill Sans MT", "Gill Sans", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+  }
+</style>
