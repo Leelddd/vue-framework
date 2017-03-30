@@ -1,10 +1,15 @@
-<template xmlns:v-on="http://www.w3.org/1999/xhtml">
+<template>
   <div id="head">
     <div id="top">
       <div id="top_left">
         <img width="50%" src="/static/logos.png">
       </div>
       <div id="top_right">
+        <label for="input1">pass to left1</label>
+        <input v-model="data1" id="input1" class="form-control">&nbsp;
+        <router-link to="/left1">Left1</router-link>
+        <br>
+        <router-link to="/left2">Left2</router-link>
       </div>
     </div>
     <br><br>
@@ -13,16 +18,27 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
   export default {
     props: ['status'],
     data () {
       return {
-        url: '',
-        query: '',
-        reminder: []
+        data1: '',
+        data2: ''
       }
     },
     methods: {
+      ...mapActions([
+        'increment'
+      ])
+    },
+    watch: {
+      data1: {
+        handler: function () {
+          this.increment(this.data1)
+        },
+        deep: false
+      }
     }
   }
 </script>
@@ -52,5 +68,10 @@
   .center {
     display: block;
     margin: auto;
+  }
+
+  .form-control {
+    width: 50%;
+    display: inline;
   }
 </style>

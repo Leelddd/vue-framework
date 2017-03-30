@@ -1,31 +1,29 @@
 <template>
   <div>
     <div class="left content">
-      <h1 class="head">Choosed</h1>
-      <article-list :articles="articles"></article-list>
+      <h1 class="head">Main Component</h1>
+      <div>{{passToChild}}</div>
+      <hr>
+      <router-view :data1="passToChild" v-on:child-say='listenToChild'></router-view>
     </div>
-    <div class="right content">
-      <h3 class="head">Explore</h3><br>
-      <h5 class="second-head">Hot Fields</h5>
-      {{show}}
-    </div>
+    <show-right :data="show"></show-right>
   </div>
 </template>
 
-<style scoped>
-  .list{
-    color:darkslateblue;
-  }
-  .list:hover{
-    cursor: pointer;
-  }
-</style>
-
 <script>
+  import ShowLeft1 from './ShowLeft1.vue'
+  import ShowLeft2 from './ShowLeft2.vue'
+  import ShowRight from './ShowRight.vue'
   export default{
+    components: {
+      ShowLeft1,
+      ShowLeft2,
+      ShowRight
+    },
     data () {
       return {
-        show: ''
+        show: '',
+        passToChild: 'From Parent'
       }
     },
     created: function () {
@@ -33,7 +31,10 @@
     },
     methods: {
       search: function () {
-        this.show = 'this is body'
+        this.show = 'this is data'
+      },
+      listenToChild: function (msg) {
+        this.passToChild = msg
       }
     }
   }
