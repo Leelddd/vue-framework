@@ -10,6 +10,7 @@
         <router-link to="/left1">Left1</router-link>
         <br>
         <router-link to="/left2">Left2</router-link>
+        <router-link to="/weather">Weather</router-link>
       </div>
     </div>
     <br><br>

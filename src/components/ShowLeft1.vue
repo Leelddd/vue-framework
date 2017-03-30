@@ -1,9 +1,14 @@
 <template>
   <div>
-    This is Left1 component in Left1 style<br>
-    parent pass "{{data1}}"<br>
-    <label for="toparent">Change Parent Value:</label>
-    <input id="toparent" v-model="data1" class="form-control">
+    <h1>This is Left1 component in Left1 style</h1>
+    <br>
+    <div>
+      parent pass "{{data1}}"
+    </div>
+    <div>
+      <label for="toparent">Change Parent Value:</label>
+      <input id="toparent" v-model="data1" class="form-control">
+    </div>
     <div>
       <b>From vuex</b>
       {{query}}
@@ -12,9 +17,9 @@
 </template>
 
 <style scoped>
-  div {
+  h1 {
     font-size: xx-large;
-    color: yellow;
+    color: indianred;
   }
 
   .form-control {
@@ -35,8 +40,7 @@
         'query'
       ])
     },
-    methods: {
-    },
+    methods: {},
     watch: {
       data1: {
         handler: function () {

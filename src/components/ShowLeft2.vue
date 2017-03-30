@@ -6,7 +6,7 @@
 
 <style scoped>
   div{
-    color: red;
+    color: palegreen;
     font-size: xx-large;
   }
 </style>

@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    query: 'q'
+    query: ''
   },
   mutations: {
     increment (state, n) {
