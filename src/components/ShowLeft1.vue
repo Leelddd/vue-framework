@@ -4,6 +4,7 @@
     <br>
     <div>
       parent pass "{{data1}}"
+
     </div>
     <div>
       <label for="toparent">Change Parent Value:</label>
@@ -13,6 +14,7 @@
       <b>From vuex</b>
       {{query}}
     </div>
+    <page class="page" :total=100 :now=1 :item=5></page>
   </div>
 </template>
 
@@ -26,11 +28,19 @@
     width: 50%;
     display: inline;
   }
+
+  .page{
+    width: 100%;
+  }
 </style>
 
 <script>
   import { mapGetters } from 'vuex'
+  import page from './Page.vue'
   export default{
+    components: {
+      page
+    },
     props: ['data1'],
     data () {
       return {}

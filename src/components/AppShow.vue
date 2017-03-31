@@ -1,11 +1,12 @@
 <template>
   <div>
-    <div class="left content">
+    <div class="left">
       <h1 class="head">Main Component</h1>
       <div>{{passToChild}}</div>
       <hr>
       <router-view :data1="passToChild" v-on:child-say='listenToChild'></router-view>
     </div>
+    <!--<show-left1 :data1="passToChild" v-on:child-say='listenToChild'></show-left1>-->
     <show-right :data="show"></show-right>
   </div>
 </template>

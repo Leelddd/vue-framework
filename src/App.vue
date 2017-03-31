@@ -1,13 +1,13 @@
 <template>
   <div id="main" class="open">
-    <app-head :status="status"></app-head>
+    <apphead :status="status"></apphead>
     <router-view class="open"></router-view>
     <app-foot></app-foot>
   </div>
 </template>
 
 <script>
-  import AppHead from './components/AppHead.vue'
+  import apphead from './components/AppHead.vue'
   import AppShow from './components/AppShow.vue'
   import AppFoot from './components/AppFoot.vue'
   export default {
@@ -17,7 +17,7 @@
       }
     },
     components: {
-      AppHead,
+      apphead,
       AppShow,
       AppFoot
     }
@@ -43,7 +43,7 @@
 
   .left {
     float: left;
-    width: 55%;
+    /*width: 55%;*/
     margin-left: 5%;
   }
 

@@ -25,14 +25,17 @@ const router = new VueRouter({
       component: AppShow,
       children: [
         {
+          name: 'left1',
           path: 'left1',
           component: ShowLeft1
         },
         {
+          name: 'left2',
           path: 'left2',
           component: ShowLeft2
         },
         {
+          name: 'weather',
           path: 'weather',
           component: ShowWeather
         }
