@@ -10,6 +10,20 @@
   </div>
 </template>
 
+<style scoped>
+  li > a{
+    color: #14926A;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: medium;
+  }
+  .nav-pills>li.active > a, .nav-pills>li.active > a:hover{
+    background-color: #45B458;
+    color: white;
+  }
+</style>
+
 <script>
   export default{
     data () {

@@ -54,9 +54,13 @@
     font-size: large;
   }
 
-  li.active>a{
+  .nav-pills>li>a:hover{
+    background-color: #45B458;
+  }
+
+  .nav-pills>li.active > a, .nav-pills>li.active > a:hover{
     background-color: white;
-    color: #45B458
+    color: #45B485;
   }
 </style>
 
@@ -71,7 +75,6 @@
       }
     },
     created: function () {
-      this.search()
     },
     methods: {
       search: function () {

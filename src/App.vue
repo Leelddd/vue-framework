@@ -52,7 +52,6 @@
   }
 
   .second-head {
-    font-family: GillSansRegular, "Gill Sans MT", "Gill Sans", Helvetica, Arial, sans-serif;
     font-size: 16px;
     font-weight: bold;
   }

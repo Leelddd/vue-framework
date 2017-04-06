@@ -38,7 +38,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
   li.active > a {
     background-color: #45B458;
     color: white;

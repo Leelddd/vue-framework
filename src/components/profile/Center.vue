@@ -1,49 +1,57 @@
 <template>
   <div>
     <div>
-      <div style="float: left; padding-left: 10px; padding-right: 5%; height: 170px" >
-        <div style="float: left"><img width="150" height="150" style="border-radius:50%;" src="../../../static/logos.png"/></div>
+      <div style="float: left; padding-top: 10px;  padding-left: 10px; padding-right: 5%; height: 150px">
+        <div style="float: left"><img width="100" height="100" style="border-radius:50%;"
+                                      :src="headimg"/></div>
         <div style="float: right; padding-left: 10px;" class="center">
-          <div style="font-size: medium;"><b>{{username}}, 欢迎您!</b></div><br>
-          <div><a>修改基础信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a>修改密码</a></div>
+          <div style="font-size: large;padding-top: 20px"><b>{{username}}, 欢迎您!</b></div>
+          <br>
+          <div style="font-size: medium">
+            <router-link to="/profile/account/info">修改基础信息</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <router-link to="/profile/account/changepwd">修改密码</router-link>
+          </div>
           <div style="clear: both;"></div>
         </div>
         <div style="clear: both;"></div>
       </div>
-      <div style="float: right; width: 35%">
-        <div>实名认证</div>
-        <div>实名认证</div>
-        <div>实名认证</div>
+      <div style="float: right; width: 38%; padding-top: 20px; font-size: large">
+        <div :class="{red: confirm.name}">实名认证<span>({{confirm.name?'已认证':'未认证'}})</span></div>
+        <div :class="{red: confirm.company}">企业认证<span>({{confirm.company?'已认证':'未认证'}})</span></div>
+        <div :class="{red: confirm.card}">绑定银行卡<span>({{confirm.card?'已认证':'未认证'}})</span></div>
       </div>
       <div style="clear: both;"></div>
     </div>
     <div id="center">
-      <div style="float: left; width: 60%">
+      <div style="float: left; width: 60%; padding-right: 20px; border-right: dashed 1px lightgrey;">
         <div>
-          <div style="float: left">我的余额</div>
-          <div style="float: right">查看</div>
+          <div style="float: left" class="second-head">我的余额</div>
+          <div style="float: right"><router-link to="/profile/account/balance">查看</router-link></div>
           <div style="clear: both;"></div>
         </div>
         <div>
           <br>
-          <div style="float: left; width: 40%; margin-left: 5%">
+          <div style="float: left; width: 40%; margin-left: 5%" class="money">
             <div>总金额</div>
-            <div><u>100000000.00</u></div>
+            <div><u>{{total}}</u></div>
           </div>
-          <div style="float: right; width: 50%">
+          <div style="float: right; width: 50%;" class="money">
             <div>可提现</div>
-            <div><u>100000000.00</u></div>
+            <div><u>{{withdraw}}</u></div>
           </div>
           <div style="clear: both"></div>
           <br>
         </div>
       </div>
-      <div style="float: right; width: 35%; border-left: dashed 1px lightgrey; padding-left: 5px; height: 100%">
+      <div style="float: right; width: 38%; height: 100%">
         <div>
-          <div style="float: left">优惠券</div>
-          <div style="float: right">查看</div>
+          <div style="float: left" class="second-head">优惠券</div>
+          <div style="float: right"><router-link to="#">查看</router-link></div>
+          <div style="clear: both"></div>
         </div>
-        <div></div>
+        <div style="clear: both">
+
+        </div>
       </div>
       <div style="clear: both"></div>
     </div>
@@ -79,16 +87,23 @@
 <style scoped>
   #center {
     border: solid 1px lightgrey;
-    margin-top: 20px;
+    /*margin-top: 20px;*/
     margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto;
     padding: 1%;
   }
-  .center{
-    justify-content:center;//子元素水平居中
-  align-items:center;//子元素垂直居中
-  display:-webkit-flex;
+
+  .money{
+    font-size: medium;
+  }
+
+  .red {
+    color: red;
+  }
+
+  .big {
+    font-size: large;
   }
 </style>
 
@@ -97,8 +112,30 @@
     components: {},
     data () {
       return {
+        headimg: '../../../static/logos.png',
+        total: 100000000.00,
+        withdraw: 100000000.00,
         username: 'xxxx',
+        confirm: {
+          name: true,
+          company: true,
+          card: false
+        },
         recentTrade: [{
+          name: '原木樟子松',
+          size: '3.0*28*18',
+          num: 45,
+          pay: 5000,
+          time: '2016-02-29'
+        },
+        {
+          name: '原木樟子松',
+          size: '3.0*28*18',
+          num: 45,
+          pay: 5000,
+          time: '2016-02-29'
+        },
+        {
           name: '原木樟子松',
           size: '3.0*28*18',
           num: 45,

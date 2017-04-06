@@ -11,7 +11,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
   li.active>a{
     background-color: #45B458;
     color: white;
@@ -27,7 +27,6 @@
       }
     },
     created: function () {
-      this.$router.push({path: '/profile/account/info'})
     },
     methods: {
     }

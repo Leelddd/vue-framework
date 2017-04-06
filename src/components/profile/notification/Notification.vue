@@ -2,7 +2,7 @@
   <div>
     <ul class="nav nav-pills">
       <li class="active"><router-link to="/profile/account/info">未读消息</router-link></li>
-      <li><router-link to="/profile/account/auth">已读消息</router-link></li>
+      <li><router-link to="">已读消息</router-link></li>
     </ul>
     <div>
       <table class="table table-bordered">

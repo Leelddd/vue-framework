@@ -13,6 +13,7 @@ import App from './App'
 import AppShow from './components/AppShow.vue'
 import Profile from './components/profile/Profile.vue'
 import Center from './components/profile/Center.vue'
+import Balance from './components/profile/account/Balance.vue'
 
 import Account from './components/profile/account/Account.vue'
 import AccountInfo from './components/profile/account/AccountInfo.vue'
@@ -56,7 +57,8 @@ Object.keys(filters).forEach(key => {
 const accountRouter = [
   {name: 'info', path: 'info', component: AccountInfo},
   {name: 'auth', path: 'auth', component: AccountAuth},
-  {name: 'changepwd', path: 'changepwd', component: AccountChangePwd}
+  {name: 'changepwd', path: 'changepwd', component: AccountChangePwd},
+  {name: 'balance', path: 'balance', component: Balance}
 ]
 
 const publishProviderActionRouter = [

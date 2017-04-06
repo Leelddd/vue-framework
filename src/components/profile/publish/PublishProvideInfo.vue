@@ -1,15 +1,20 @@
 <template>
   <div>
-    <div>list</div>
+    <div>
+      <br>
+      <select>
+        <option></option>
+      </select>
+      <br><br>
+    </div>
     <div>
       <table class="table table-bordered">
         <thead>
         <tr>
           <th>商品名称</th>
           <th>规格</th>
-          <th>数量</th>
-          <th>支付</th>
-          <th>时间</th>
+          <th>口岸/产地</th>
+          <th>单价</th>
           <th>操作</th>
         </tr>
         </thead>
@@ -17,7 +22,7 @@
         <tr v-for="t in provideInfo">
           <td>{{t.name}}</td>
           <td>{{t.size}}</td>
-          <td>{{t.place}}</td>
+          <td>{{t.port}}</td>
           <td>{{t.price}}</td>
           <td>
             <a>查看</a>
@@ -34,6 +39,13 @@
   </div>
 </template>
 
+<style scoped>
+  th{
+    background-color: #EEFBF7;
+  }
+
+</style>
+
 <script>
   export default{
     data () {
@@ -42,9 +54,8 @@
           {
             name: '原木樟子松',
             size: '3.0*28*18',
-            place: 45,
-            price: 5000,
-            time: '2016-02-29'
+            port: '二连浩特',
+            price: 1440
           }
         ]
       }
