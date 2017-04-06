@@ -2,8 +2,11 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import VueResource from 'vue-resource'
+// import VueResource from 'vue-resource'
 import store from './store'
+import check from './plugin/check'
+import axios from 'axios'
+import * as filters from './filter'
 import '../node_modules/bootstrap/dist/js/bootstrap.min'
 
 import App from './App'
@@ -13,8 +16,23 @@ import ShowLeft2 from './components/ShowLeft2.vue'
 import ShowWeather from './components/ShowWeather.vue'
 
 Vue.use(VueRouter)
-Vue.use(VueResource)
-Vue.http.options.emulateJSON = true
+// Vue.use(VueResource)
+Vue.use(check)
+// Vue.http.options.emulateJSON = true
+Vue.prototype.$http = axios
+
+Vue.directive('v-mail', {
+  // 当绑定元素插入到 DOM 中。
+  update: function (el) {
+    // 聚焦元素
+    el.focus()
+  }
+})
+
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})
+
 const router = new VueRouter({
   mode: 'history',
   base: __dirname,
@@ -48,6 +66,7 @@ const router = new VueRouter({
 new Vue({
   router,
   store,
+  check,
   el: '#app',
   render: h => h(App)
 })

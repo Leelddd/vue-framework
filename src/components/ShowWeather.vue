@@ -45,8 +45,8 @@
     methods: {
       getWeather () {
         this.$http.get(this.url).then((response) => {
-          console.log(response.body.HeWeather5)
-          this.weather = response.body.HeWeather5
+          console.log(response.data.HeWeather5)
+          this.weather = response.data.HeWeather5
         }, (response) => {
           // error callback
         })

@@ -1,17 +1,17 @@
 <template>
   <div>
     <ul class="pagination">
-      <li :class="{disabled: thisnow == 1}" @click="goTo(parseInt(thisnow) - 1)"><a>&laquo;</a></li>
+      <li :class="{disabled: thisnow == 1}" @click="goTo(thisnow - 1)"><a>&laquo;</a></li>
       <li v-for="n in pageTotal" v-if="n >= start && n <= end" v-bind:class="{active: n == thisnow}" @click="goTo(n)"><a>{{n}}</a>
       </li>
-      <li :class="{disabled: thisnow == pageTotal}" @click="goTo(parseInt(thisnow) + 1)"><a>&raquo;</a></li>
+      <li :class="{disabled: thisnow == pageTotal}" @click="goTo(thisnow + 1)"><a>&raquo;</a></li>
       <li style="display: inline;">
-        <label>跳到</label><select class="form-control" v-model="thisnow">
+        <label>跳到</label><select class="form-control" v-model.number="thisnow">
           <option v-for="n in pageTotal">{{n}}</option>
         </select><label>页</label>
       </li>
       <li style="display: inline;">
-        <label>每页</label><select class="form-control" v-model="thisitem">
+        <label>每页</label><select class="form-control" v-model.number="thisitem">
           <option v-for="n in items">{{n}}</option>
         </select><label>项</label>
       </li>
@@ -40,13 +40,9 @@
     data () {
       return {
         items: [5, 10, 15],
-        thisnow: 1,
-        thisitem: 10
+        thisnow: this.now,
+        thisitem: this.item
       }
-    },
-    created: function () {
-      this.thisnow = this.now
-      this.thisitem = this.item
     },
     computed: {
       pageTotal: function () {
