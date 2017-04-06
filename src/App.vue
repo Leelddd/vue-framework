@@ -41,21 +41,6 @@
     min-height:600px
   }
 
-  .left {
-    float: left;
-    /*width: 55%;*/
-    margin-left: 5%;
-  }
-
-  .right {
-    float: right;
-    width: 30%;
-    margin-right: 5%;
-    background-color: whitesmoke;
-    padding-left: 2%;
-    font-family: Consolas,serif;
-  }
-
   .content {
     font-size: 14px;
   }
