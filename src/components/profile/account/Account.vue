@@ -12,7 +12,7 @@
       </li>
     </ul>
     <div>
-      <router-view :data1="passToChild" v-on:child-say='listenToChild'></router-view>
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -32,6 +32,11 @@
   .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
     background-color: #45B458;
     color: white;
+    font-weight: 400;
+  }
+  .nav-pills > li > a {
+    color: #45B458;
+    font-weight: 700;
   }
 </style>
 

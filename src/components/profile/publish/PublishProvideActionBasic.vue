@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div>商品信息</div>
+    <div><br>
+      <span class="second-head">商品信息</span><br><br>
+    </div>
     <div class="form-group row">
       <div :class="cl.labelcss"><label class="control-label my-label" for="type">木材类型：</label></div>
       <div :class="cl.inputcss">
@@ -41,7 +43,7 @@
       <div :class="cl.labelcss"><label class="control-label" for="rad">径级：</label></div>
       <div :class="cl.inputcss"><input id="rad" v-model="model.rad" class="form-control"/></div>
     </div>
-    <div>销售信息</div>
+    <div><span class="second-head">销售信息</span><br><br></div>
     <div class="form-group row">
       <div :class="cl.labelcss"><label class="control-label" for="price">销售价：</label></div>
       <div :class="cl.inputcss"><input id="price" v-model="model.price" class="form-control"/></div>
@@ -66,8 +68,13 @@
 </template>
 
 <style scoped>
-  .control-label{
-    /*font-weight: 300;*/
+  .second-head {
+    font-weight: 700;
+    font-size: medium;
+  }
+  .control-label {
+    font-weight: 300;
+    font-size: medium;
   }
 </style>
 
@@ -99,7 +106,6 @@
     },
     created: function () {
     },
-    methods: {
-    }
+    methods: {}
   }
 </script>

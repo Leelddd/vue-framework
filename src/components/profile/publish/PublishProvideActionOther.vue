@@ -1,5 +1,6 @@
 <template>
   <div>
+    <br>
     <div class="form-group row">
       <div :class="cl.labelcss"><label class="control-label" for="type">腐烂：</label></div>
       <div :class="cl.inputcss"><select id="type" v-model="model.type" class="form-control">
@@ -58,6 +59,17 @@
     </div>
   </div>
 </template>
+
+<style scoped>
+  .second-head {
+    font-weight: 700;
+    font-size: medium;
+  }
+  .control-label {
+    font-weight: 300;
+    font-size: medium;
+  }
+</style>
 
 <script>
   export default{

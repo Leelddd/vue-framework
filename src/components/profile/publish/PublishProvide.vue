@@ -1,8 +1,8 @@
 <template>
   <div>
     <ul class="nav nav-pills">
-      <li class="active"><router-link to="/profile/publish/provide/info">供货信息</router-link></li>
-      <li><router-link to="/profile/publish/provide/action/basic">发布货源</router-link></li>
+      <li :class="{active: navnow('info') }"><router-link to="/profile/publish/provide/info">供货信息</router-link></li>
+      <li :class="{active: navnow('action')}"><router-link to="/profile/publish/provide/action/basic">发布货源</router-link></li>
     </ul>
     <div>
       <router-view></router-view>
@@ -11,16 +11,25 @@
 </template>
 
 <style scoped>
-  li > a{
-    color: #14926A;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    font-size: medium;
+  ul {
+    border-bottom: solid 1px lightgrey;
   }
-  .nav-pills>li.active > a, .nav-pills>li.active > a:hover{
+
+  .nav-pills > li > a {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+
+  .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
     background-color: #45B458;
     color: white;
+    font-weight: 400;
+  }
+  .nav-pills > li > a {
+    color: #45B458;
+    font-weight: 700;
   }
 </style>
 
@@ -33,6 +42,10 @@
     created: function () {
     },
     methods: {
+      navnow: function (str) {
+        var arr = this.$route.path.split('/')
+        return str === arr[4]
+      }
     }
   }
 </script>

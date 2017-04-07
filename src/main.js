@@ -20,6 +20,15 @@ import AccountInfo from './components/profile/account/AccountInfo.vue'
 import AccountAuth from './components/profile/account/AccountAuth.vue'
 import AccountChangePwd from './components/profile/account/AccountChangePwd.vue'
 
+import WithDraw from './components/profile/blance/Withdraw.vue'
+import WithDrawInput from './components/profile/blance/WithdrawInput.vue'
+import WithDrawSuccess from './components/profile/blance/WithdrawSuccess.vue'
+import WithDrawFail from './components/profile/blance/WithdrawFail.vue'
+
+import AddBankCard from './components/profile/blance/AddBankCard.vue'
+import AddBankCardInput from './components/profile/blance/AddBankCardInput.vue'
+import AddBankCardConfirm from './components/profile/blance/AddBankCardConfirm.vue'
+
 import Publish from './components/profile/publish/Publish.vue'
 import PublishProvide from './components/profile/publish/PublishProvide.vue'
 import PublishProvideInfo from './components/profile/publish/PublishProvideInfo.vue'
@@ -33,6 +42,7 @@ import PublishWantedActionBasic from './components/profile/publish/PublishWanted
 import PublishWantedActionOther from './components/profile/publish/PublishWantedActionOther.vue'
 
 import Notification from './components/profile/notification/Notification.vue'
+import NotificationDetail from './components/profile/notification/NotificationDetail.vue'
 
 import Order from './components/profile/order/Order.vue'
 
@@ -62,6 +72,17 @@ const accountRouter = [
   {name: 'info', path: 'info', component: AccountInfo},
   {name: 'auth', path: 'auth', component: AccountAuth},
   {name: 'changepwd', path: 'changepwd', component: AccountChangePwd}
+]
+
+const withdrawRouter = [
+  {name: 'input', path: 'input', component: WithDrawInput},
+  {name: 'success', path: 'success', component: WithDrawSuccess},
+  {name: 'fail', path: 'fail', component: WithDrawFail}
+]
+
+const bankRouter = [
+  {name: 'input', path: 'input', component: AddBankCardInput},
+  {name: 'confirm', path: 'confirm', component: AddBankCardConfirm}
 ]
 
 const publishProviderActionRouter = [
@@ -102,8 +123,12 @@ const router = new VueRouter({
         {name: 'center', path: 'center', component: Center},
         {name: 'account', path: 'account', component: Account, children: accountRouter},
         {name: 'balance', path: 'balance', component: Balance},
+        {name: 'bank', path: 'balance/bank', component: AddBankCard, children: bankRouter},
+        {name: 'bank', path: 'balance/withdraw', component: WithDraw, children: withdrawRouter},
         {name: 'publish', path: 'publish', component: Publish, children: publishRouter},
-        {name: 'notification', path: 'notification', component: Notification},
+        {name: 'notification', path: 'notification/read', component: Notification},
+        {name: 'notification', path: 'notification/unread', component: Notification},
+        {name: 'detail', path: 'notification/detail/:id', component: NotificationDetail},
         {name: 'order', path: 'order', component: Order}
       ]
     }

@@ -13,7 +13,6 @@
       }
     },
     created: function () {
-      this.$router.push({path: '/profile/publish/provide'})
     },
     methods: {
     }
