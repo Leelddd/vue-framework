@@ -13,7 +13,7 @@ import App from './App'
 import AppShow from './components/AppShow.vue'
 import Profile from './components/profile/Profile.vue'
 import Center from './components/profile/Center.vue'
-import Balance from './components/profile/account/Balance.vue'
+import Balance from './components/profile/blance/Balance.vue'
 
 import Account from './components/profile/account/Account.vue'
 import AccountInfo from './components/profile/account/AccountInfo.vue'
@@ -27,7 +27,7 @@ import PublishProvideAction from './components/profile/publish/PublishProvideAct
 import PublishProvideActionBasic from './components/profile/publish/PublishProvideActionBasic.vue'
 import PublishProvideActionOther from './components/profile/publish/PublishProvideActionOther.vue'
 import PublishWanted from './components/profile/publish/PublishWanted.vue'
-import PublishWantedInfo from './components/profile/publish/PublishWantedInfo'
+import PublishWantedInfo from './components/profile/publish/PublishWantedInfo.vue'
 import PublishWantedAction from './components/profile/publish/PublishWantedAction.vue'
 import PublishWantedActionBasic from './components/profile/publish/PublishWantedActionBasic.vue'
 import PublishWantedActionOther from './components/profile/publish/PublishWantedActionOther.vue'
@@ -54,11 +54,14 @@ Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
 
+// const balanceRouter = [
+//   {name: 'balance', path: 'balance', component: Balance}
+// ]
+
 const accountRouter = [
   {name: 'info', path: 'info', component: AccountInfo},
   {name: 'auth', path: 'auth', component: AccountAuth},
-  {name: 'changepwd', path: 'changepwd', component: AccountChangePwd},
-  {name: 'balance', path: 'balance', component: Balance}
+  {name: 'changepwd', path: 'changepwd', component: AccountChangePwd}
 ]
 
 const publishProviderActionRouter = [
@@ -98,6 +101,7 @@ const router = new VueRouter({
       children: [
         {name: 'center', path: 'center', component: Center},
         {name: 'account', path: 'account', component: Account, children: accountRouter},
+        {name: 'balance', path: 'balance', component: Balance},
         {name: 'publish', path: 'publish', component: Publish, children: publishRouter},
         {name: 'notification', path: 'notification', component: Notification},
         {name: 'order', path: 'order', component: Order}

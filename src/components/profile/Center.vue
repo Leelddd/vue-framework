@@ -26,7 +26,7 @@
       <div style="float: left; width: 60%; padding-right: 20px; border-right: dashed 1px lightgrey;">
         <div>
           <div style="float: left" class="second-head">我的余额</div>
-          <div style="float: right"><router-link to="/profile/account/balance">查看</router-link></div>
+          <div style="float: right"><router-link to="/profile/balance">查看</router-link></div>
           <div style="clear: both;"></div>
         </div>
         <div>

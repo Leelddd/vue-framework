@@ -8,7 +8,7 @@
       <br><br>
     </div>
     <div>
-      <table class="table table-bordered">
+      <table class="table">
         <thead>
         <tr>
           <th>商品名称</th>
@@ -20,7 +20,11 @@
         </thead>
         <tbody>
         <tr v-for="t in provideInfo">
-          <td>{{t.name}}</td>
+          <td>
+            <img width="50" :src="t.img"/>
+            {{t.name}}
+
+          </td>
           <td>{{t.size}}</td>
           <td>{{t.port}}</td>
           <td>{{t.price}}</td>
@@ -33,25 +37,41 @@
         </tbody>
       </table>
     </div>
-    <div>
-      <!--todo page-->
+    <div align="center">
+      <page :total=100 :now=1 :item=5></page>
     </div>
   </div>
 </template>
 
 <style scoped>
-  th{
+  th {
     background-color: #EEFBF7;
   }
 
+  .table {
+    border: solid lightgrey 1px;
+    border-top: solid #63BB9C 3px;
+  }
 </style>
 
 <script>
+  import page from './../Page.vue'
   export default{
+    components: {
+      page
+    },
     data () {
       return {
         provideInfo: [
           {
+            img: '/static/logos.png',
+            name: '原木樟子松',
+            size: '3.0*28*18',
+            port: '二连浩特',
+            price: 1440
+          },
+          {
+            img: '/static/logos.png',
             name: '原木樟子松',
             size: '3.0*28*18',
             port: '二连浩特',
@@ -62,7 +82,6 @@
     },
     created: function () {
     },
-    methods: {
-    }
+    methods: {}
   }
 </script>

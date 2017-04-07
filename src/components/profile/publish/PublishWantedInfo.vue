@@ -1,12 +1,14 @@
 <template>
   <div>
     <div>
+      <br>
       <select>
-        <option>test</option>
+        <option></option>
       </select>
+      <br><br>
     </div>
     <div>
-      <table class="table table-bordered">
+      <table class="table">
         <thead>
         <tr>
           <th>商品名称</th>
@@ -18,7 +20,9 @@
         </thead>
         <tbody>
         <tr v-for="t in provideInfo">
-          <td>{{t.name}}</td>
+          <td>
+            {{t.name}}
+          </td>
           <td>{{t.size}}</td>
           <td>{{t.num}}</td>
           <td>{{t.price}}</td>
@@ -31,29 +35,49 @@
         </tbody>
       </table>
     </div>
-    <div>
-      <!--todo page-->
+    <div align="center">
+      <page :total=100 :now=1 :item=5></page>
     </div>
   </div>
 </template>
 
+<style scoped>
+  th {
+    background-color: #EEFBF7;
+  }
+
+  .table {
+    border: solid lightgrey 1px;
+    border-top: solid #63BB9C 3px;
+  }
+</style>
+
 <script>
+  import page from './../Page.vue'
   export default{
+    components: {
+      page
+    },
     data () {
       return {
         provideInfo: [
           {
             name: '原木樟子松',
-            size: '3.0mm*28mm*18mm',
+            size: '3.0*28*18',
             num: '50立方米',
-            price: '￥1440-￥1500',
+            price: 1440
+          },
+          {
+            name: '原木樟子松',
+            size: '3.0*28*18',
+            num: '50立方米',
+            price: 1440
           }
         ]
       }
     },
     created: function () {
     },
-    methods: {
-    }
+    methods: {}
   }
 </script>

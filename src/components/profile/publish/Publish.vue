@@ -1,9 +1,11 @@
 <template>
   <div>
-      <router-view :data1="passToChild" v-on:child-say='listenToChild'></router-view>
+      <router-view></router-view>
   </div>
 </template>
+<style scoped>
 
+</style>
 <script>
   export default{
     data () {
