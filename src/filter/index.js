@@ -1,4 +1,5 @@
 // reference https://my.oschina.net/u/242764/blog/483288
+// todo 正则验证表单提交
 
 export function username (name) {
   const re = new RegExp('^[\u4e00-\u9fa5] {0,}$')

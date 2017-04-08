@@ -1,11 +1,11 @@
 <template xmlns="http://www.w3.org/1999/html">
   <div>
     <div>
-      <div><span class="second-head">我的余额</span></div>
-      <hr><br>
+      <div><span class="profile-second-head">我的余额</span></div>
+      <hr class="profile-hr"><br>
       <div>
-        <div><span class="head">总金额：{{model.total}}</span>
-          <span class="head">可提现：{{model.withdraw}}</span></div>
+        <div><span class="profile-head">总金额：{{model.total}}</span>
+          <span class="profile-head">可提现：{{model.withdraw}}</span></div>
         <div><br>
           <button class="btn" @click="withdraw()">提现</button>
           <button class="btn" @click="paymentpwd()">支付密码</button>
@@ -15,20 +15,20 @@
     <br>
     <div>
       <div>
-        <span class="second-head">银行卡</span>
+        <span class="profile-second-head">银行卡</span>
         <span style="float: right"><router-link to="/profile/balance/bank/list">详情</router-link></span>
       </div>
-      <hr><br>
+      <hr class="profile-hr"><br>
       <div class="row">
         <div class="col-md-3 bak" align="center">
           <router-link to="/profile/balance/bank/input"><b style="font-size: xx-large">+</b><br>添加银行卡</router-link>
         </div>
       </div>
       <!--todo yinhangka component-->
-    </div>
+    </div><br>
     <div>
-      <div><span class="second-head">资金流水</span></div>
-      <hr>
+      <div><span class="profile-second-head">资金流水</span></div>
+      <hr class="profile-hr">
       <table class="table table-bordered">
         <thead>
         <tr>
@@ -52,24 +52,9 @@
 </template>
 
 <style scoped>
-  li.active > a {
-    background-color: #45B458;
-    color: white;
-  }
-
-  hr {
-    border: dashed 1px lightgrey;
-    margin: auto;
-  }
-
-  .second-head {
-    font-weight: 400;
-    font-size: large;
-  }
-
-  .head {
-    font-weight: 700;
-    font-size: x-large;
+  .row {
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .btn {

@@ -1,0 +1,14 @@
+.profile-hr {
+  border: dashed 1px lightgrey;
+  margin: auto;
+}
+
+.profile-head {
+  font-weight: 700;
+  font-size: x-large;
+}
+
+.profile-second-head {
+  font-weight: 400;
+  font-size: large;
+}

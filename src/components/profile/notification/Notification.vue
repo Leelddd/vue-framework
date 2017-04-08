@@ -84,7 +84,7 @@
         show: 0 // 0-unread 1-read
       }
     },
-    created: function () {
+    beforeUpdate: function () {
       this.get()
       if (this.$route.params.status === 'unread') {
         this.show = 0

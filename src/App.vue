@@ -40,19 +40,4 @@
     height: auto;
     min-height:600px
   }
-
-  .content {
-    font-size: 14px;
-  }
-
-  .head {
-    font-family: GillSansRegular, "Gill Sans MT", "Gill Sans", Helvetica, Arial, sans-serif;
-    font-size: 26px;
-    font-weight: bold;
-  }
-
-  .second-head {
-    font-size: 16px;
-    font-weight: bold;
-  }
 </style>

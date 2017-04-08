@@ -56,6 +56,7 @@
 <style scoped>
   @import "../../assets/profile/profile-nav.css";
   @import "../../assets/profile/profile-table.css";
+  @import "../../assets/profile/profile-basic.css";
   .main {
     width: 1100px;
     margin-left: auto;
