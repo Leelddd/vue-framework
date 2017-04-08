@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="profile-nav">
     <ul class="nav nav-pills">
       <li :class="{active: navnow('info')}"><router-link to="/profile/publish/wanted/info">求购信息</router-link></li>
       <li :class="{active: navnow('action')}"><router-link to="/profile/publish/wanted/action/basic">发布求购</router-link></li>
@@ -11,26 +11,7 @@
 </template>
 
 <style scoped>
-  ul {
-    border-bottom: solid 1px lightgrey;
-  }
 
-  .nav-pills > li > a {
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    border-bottom-left-radius: 0px;
-  }
-
-  .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
-    background-color: #45B458;
-    color: white;
-    font-weight: 400;
-  }
-  .nav-pills > li > a {
-    color: #45B458;
-    font-weight: 700;
-  }
 </style>
 
 <script>

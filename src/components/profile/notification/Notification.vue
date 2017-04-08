@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="profile-nav">
     <ul class="nav nav-pills">
       <li :class="{active: !show}">
-        <a @click="show = 0">未读消息</a>
+        <router-link to="/profile/notification/unread">未读消息</router-link>
       </li>
       <li :class="{active: show}">
-        <a @click="show = 1">已读消息</a>
+        <router-link to="/profile/notification/read">已读消息</router-link>
       </li>
     </ul>
     <br>
@@ -61,27 +61,6 @@
     padding-bottom: 2px;
   }
 
-  ul {
-    border-bottom: solid 1px lightgrey;
-  }
-
-  .nav-pills > li > a {
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    border-bottom-left-radius: 0px;
-  }
-
-  .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
-    background-color: #45B458;
-    color: white;
-    cursor: pointer;
-  }
-
-  .nav-pills > li > a:hover{
-    cursor: pointer;
-  }
-
   th {
     background-color: #EEFBF7;
   }
@@ -107,6 +86,11 @@
     },
     created: function () {
       this.get()
+      if (this.$route.params.status === 'unread') {
+        this.show = 0
+      } else {
+        this.show = 1
+      }
     },
     computed: {
       ...mapGetters([

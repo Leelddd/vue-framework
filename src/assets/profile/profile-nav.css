@@ -1,0 +1,23 @@
+.profile-nav > ul {
+  border-bottom: solid 1px lightgrey;
+}
+
+.profile-nav > .nav-pills > li > a {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.profile-nav > .nav-pills > li.active > a,
+.profile-nav > .nav-pills > li.active > a:focus,
+.profile-nav > .nav-pills > li.active > a:hover {
+  background-color: #45B458;
+  color: white;
+  font-weight: 400;
+}
+
+.profile-nav > .nav-pills > li > a {
+  color: #45B458;
+  font-weight: 700;
+}

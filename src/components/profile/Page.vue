@@ -2,9 +2,17 @@
   <div>
     <ul class="pagination">
       <li :class="{disabled: thisnow == 1}" @click="goTo(thisnow - 1)"><a>上一页</a></li>
+      <template v-if="start > 2">
+        <li @click="goTo(1)"><a>1</a></li>
+        <li><a>...</a></li>
+      </template>
       <li class="" v-for="n in pageTotal" v-if="n >= start && n <= end" v-bind:class="{active: n == thisnow}" @click="goTo(n)">
         <a>{{n}}</a>
       </li>
+      <template v-if="end < pageTotal -2 ">
+        <li><a>...</a></li>
+        <li @click="goTo(pageTotal)"><a>{{pageTotal}}</a></li>
+      </template>
       <li :class="{disabled: thisnow == pageTotal}" @click="goTo(thisnow + 1)"><a>下一页</a></li>
       <li style="display: inline;">
         <label>跳到</label><select class="form-control" v-model.number="thisnow">

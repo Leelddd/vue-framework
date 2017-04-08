@@ -7,14 +7,17 @@
         <div><span class="head">总金额：{{model.total}}</span>
           <span class="head">可提现：{{model.withdraw}}</span></div>
         <div><br>
-          <button class="btn" @click="withdraw()">体现</button>
-          <button class="btn">支付密码</button>
+          <button class="btn" @click="withdraw()">提现</button>
+          <button class="btn" @click="paymentpwd()">支付密码</button>
         </div>
       </div>
     </div>
     <br>
     <div>
-      <div><span class="second-head">银行卡</span></div>
+      <div>
+        <span class="second-head">银行卡</span>
+        <span style="float: right"><router-link to="/profile/balance/bank/list">详情</router-link></span>
+      </div>
       <hr><br>
       <div class="row">
         <div class="col-md-3 bak" align="center">
@@ -107,6 +110,9 @@
     methods: {
       withdraw: function () {
         this.$router.push('/profile/balance/withdraw/input')
+      },
+      paymentpwd: function () {
+        this.$router.push('/profile/balance/payment/set')
       }
     }
   }

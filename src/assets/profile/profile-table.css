@@ -1,0 +1,8 @@
+.profile-table > th {
+  background-color: #EEFBF7;
+}
+
+.profile-table > .table {
+  border: solid lightgrey 1px;
+  border-top: solid #63BB9C 3px;
+}
