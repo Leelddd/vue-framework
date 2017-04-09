@@ -1,15 +1,23 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import utils from '../lib/utils'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    // isLogin: false,
     query: '',
-    token: '149163835252f393efc757d6a62b081e133b45c446',
-    version: '2.0',
+    token: '149173861152f393efc757d6a62b081e133b45c446',
+    version: '3.0',
     uid: '730',
     uname: 'com01197688',
+    vinfo: {
+      vbank: true,
+      vcompany: true,
+      vtruename: true
+    },
+    info: {},
     tree: {
       account: {
         val: '基础信息',
@@ -77,14 +85,36 @@ export default new Vuex.Store({
     increment (state, n) {
       console.log(n)
       state.query = n
+    },
+    login (state, status) {
+      utils.setCookie('isLogin', 'true')
+      // state.isLogin = status
+    },
+    uinfo (state, info) {
+      state.token = info.mb_token
+      state.uid = info.userid
+      state.uname = info.username
+      state.vinfo.vbank = info.vbank
+      state.vinfo.vcompany = info.vcompany
+      state.vinfo.vtruename = info.vtruename
     }
   },
   actions: {
     increment ({commit}, n) {
       commit('increment', n)
+    },
+    login ({commit}, status) {
+      commit('login', status)
+    },
+    uinfo ({commit}, info) {
+      commit('uinfo', info)
     }
   },
   getters: {
+    isLogin (state) {
+      console.log(utils.getCookie('isLogin') !== null)
+      return utils.getCookie('isLogin') !== null
+    },
     query (state) {
       return state.query
     },

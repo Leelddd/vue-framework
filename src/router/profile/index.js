@@ -4,7 +4,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import AppShow from '../../components/AppShow.vue'
+import mall from '../../pages/mall.vue'
+import productList from '../../pages/productList.vue'
+import productDetail from '../../pages/productDetail.vue'
+
 import Profile from '../../components/profile/Profile.vue'
 import Center from '../../components/profile/Center.vue'
 import Balance from '../../components/profile/balance/Balance.vue'
@@ -67,7 +70,6 @@ const withdrawRouter = [
 ]
 
 const bankRouter = [
-  {name: 'list', path: 'list', component: ListBankCard},
   {name: 'input', path: 'input', component: AddBankCardInput},
   {name: 'confirm', path: 'confirm', component: AddBankCardConfirm}
 ]
@@ -119,7 +121,31 @@ export default new VueRouter({
   // mode: 'history',
   base: __dirname,
   routes: [
-    {path: '/', name: 'home', component: AppShow},
+    // {path: '/', name: 'home', component: AppShow},
+    {
+      path: '/',
+      component: mall
+    },
+    {
+      path: '/mall',
+      component: mall
+    },
+    {
+      path: '/productList',
+      component: productList
+    },
+    {
+      path: '/productList/:catId&:page',
+      component: productList
+    },
+    {
+      path: '/productDetail',
+      component: productDetail
+    },
+    {
+      path: '/productDetail/:catId&:wgoodsId&:pcatId&:pcatname',
+      component: productDetail
+    },
     {
       path: '/profile',
       name: 'profile',
@@ -129,6 +155,7 @@ export default new VueRouter({
         {name: 'account', path: 'account', component: Account, children: accountRouter},
         {name: 'balance', path: 'balance', component: Balance},
         {name: 'bank', path: 'balance/bank', component: AddBankCard, children: bankRouter},
+        {name: 'banklist', path: 'balance/banklist', component: ListBankCard},
         {name: 'bank', path: 'balance/withdraw', component: WithDraw, children: withdrawRouter},
         {name: 'payment', path: 'balance/payment/:status', component: PaymentPassword},
         {name: 'publish', path: 'publish', component: Publish, children: publishRouter},
@@ -136,6 +163,21 @@ export default new VueRouter({
         {name: 'detail', path: 'notification/detail/:id', component: NotificationDetail},
         {name: 'order', path: 'order', component: Order, children: orderRouter}
       ]
+    },
+    {
+      path: '/Login',
+      name: 'Login',
+      component: require('components/Login.vue')
+    },
+    {
+      path: '/Register',
+      name: 'Register',
+      component: require('components/Register.vue')
+    },
+    {
+      path: '/ForgetPass',
+      name: 'ForgetPass',
+      component: require('components/ForgetPass.vue')
     }
   ]
 })

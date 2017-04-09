@@ -7,6 +7,7 @@ import check from './plugin/check'
 import axios from 'axios'
 import * as filters from './filter'
 import '../node_modules/bootstrap/dist/js/bootstrap.min'
+// import jq from 'jquery'
 
 import router from './router/profile'
 
@@ -37,6 +38,7 @@ new Vue({
   router,
   store,
   check,
+  // jq,
   el: '#app',
   render: h => h(App)
 })

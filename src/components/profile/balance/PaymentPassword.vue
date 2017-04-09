@@ -10,16 +10,16 @@
         <label class="control-label" for="old">手机号：</label>
       </div>
       <div :class="cl.inputcss" class="input-group">
-        <input id="old" v-model="model.oldpwd" class="form-control"/>
+        <input id="old" v-model="model.mobile" class="form-control"/>
         <span class="input-group-addon">发送验证码</span>
       </div>
     </div>
     <div class="form-group row">
       <div :class="cl.labelcss">
-        <label class="control-label" for="new">验证码：</label>
+        <label class="control-label" for="sms">验证码：</label>
       </div>
       <div :class="cl.inputcss">
-        <input id="new" v-model="model.newpwd" class="form-control"/><br>
+        <input id="sms" v-model="model.smsCode" class="form-control"/><br>
       </div>
     </div>
     <div class="form-group row">
@@ -27,7 +27,7 @@
         <label class="control-label" for="confirm">支付密码：</label>
       </div>
       <div :class="cl.inputcss">
-        <input id="confirm" v-model="model.confirm" class="form-control"/>
+        <input type="password" id="confirm" v-model="model.newPaywd" class="form-control"/>
       </div>
     </div>
     <div class="form-group row">
@@ -44,6 +44,7 @@
   .info > div {
     margin-bottom: 20px;
   }
+
   .input-group[class*=col-] {
     float: none;
     padding-right: 15px;
@@ -52,13 +53,14 @@
 </style>
 
 <script>
+  import { mapGetters } from 'vuex'
   export default{
     data () {
       return {
         model: {
-          oldpwd: '',
-          newpwd: '',
-          confirm: ''
+          mobile: '',
+          smsCode: '',
+          newPaywd: ''
         },
         cl: {
           labelcss: 'col-md-2',
@@ -67,6 +69,10 @@
       }
     },
     computed: {
+      ...mapGetters([
+        'token',
+        'userId'
+      ]),
       head: function () {
         if (this.$route.params.status === 'set') {
           return '设置支付密码'
@@ -76,6 +82,18 @@
     },
     created: function () {
     },
-    methods: {}
+    methods: {
+      change: function () {
+        this.model.token = this.token
+        this.model.userId = this.userId
+        this.$http.get('http://rest.' + this.isMirror + '.emulian.com/na/g/updpaywd/account.service', {
+          params: this.model
+        }).then((response) => {
+          // todo
+        }, (response) => {
+          // error callback
+        })
+      }
+    }
   }
 </script>

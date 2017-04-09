@@ -19,7 +19,9 @@
     "jquery": "^3.0.0",
     "vue-form": "^3.1.1",
     "axios": "^0.16.0",
-    "vue-file-upload": "^0.1.1"
+    "vue-file-upload": "^0.1.1",
+    "md5": "^2.2.1",
+    "sha1": "^1.1.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",

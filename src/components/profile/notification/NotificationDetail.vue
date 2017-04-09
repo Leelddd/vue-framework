@@ -44,7 +44,7 @@
     },
     methods: {
       get: function () {
-        this.$http.get('http://rest.mirror.emulian.com/web/g/one/message.service', {
+        this.$http.get('http://rest.' + this.isMirror + '.emulian.com/web/g/one/message.service', {
           params: {
             mbtoken: this.token,
             mid: 2,

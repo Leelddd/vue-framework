@@ -1,2 +1,6 @@
 build/*.js
 config/*.js
+src/components/profile/account/*.vue
+src/components/profile/*.vue
+src/components/*.vue
+src/lib/*.js

@@ -1,31 +1,29 @@
 <template>
   <div id="main" class="open">
-    <apphead :status="status"></apphead>
-    <router-view class="open"></router-view>
-    <app-foot></app-foot>
+    <mallHeader></mallHeader>
+    <router-view></router-view>
+    <mallFooter></mallFooter>
   </div>
 </template>
 
 <script>
-  import apphead from './components/AppHead.vue'
-  import AppShow from './components/AppShow.vue'
-  import AppFoot from './components/AppFoot.vue'
+  import mallHeader from './components/mall/mallHeader.vue'
+  import mallFooter from './components/mall/mallFooter.vue'
   export default {
-    data () {
-      return {
-        status: false
-      }
-    },
     components: {
-      apphead,
-      AppShow,
-      AppFoot
+      mallHeader,
+      mallFooter
     }
   }
 </script>
 
 <style scoped>
   @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+  body{
+    margin: 0px;
+    padding: 0px;
+  }
 
   .open:after {
     content: ".";

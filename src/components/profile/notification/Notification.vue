@@ -100,7 +100,7 @@
     },
     methods: {
       get: function () {
-        this.$http.get('http://rest.mirror.emulian.com/web/g/lst/message.service', {
+        this.$http.get('http://rest.' + this.isMirror + '.emulian.com/web/g/lst/message.service', {
           params: {
             mbtoken: this.token,
             mid: 2,
@@ -116,6 +116,9 @@
         }, (response) => {
           // error callback
         })
+      },
+      log: function () {
+        console.log('123')
       }
     }
   }

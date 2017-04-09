@@ -49,6 +49,8 @@
     <div class="right">
       <router-view></router-view>
     </div>
+    <div style="clear: both;"></div>
+    <br>
     <!--<show-left1 :data1="passToChild" v-on:child-say='listenToChild'></show-left1>-->
   </div>
 </template>

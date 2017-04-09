@@ -2,10 +2,11 @@
   <div>
     <div>
       <div><span class="profile-second-head">我的余额</span></div>
-      <hr class="profile-hr"><br>
+      <hr class="profile-hr">
+      <br>
       <div>
-        <div><span class="profile-head">总金额：{{model.total}}</span>
-          <span class="profile-head">可提现：{{model.withdraw}}</span></div>
+        <div><span class="profile-head">总金额：{{model.amount}}.00</span>
+          <span class="profile-head">可提现：{{model.withdrawAmount}}.00</span></div>
         <div><br>
           <button class="btn" @click="withdraw()">提现</button>
           <button class="btn" @click="paymentpwd()">支付密码</button>
@@ -16,16 +17,22 @@
     <div>
       <div>
         <span class="profile-second-head">银行卡</span>
-        <span style="float: right"><router-link to="/profile/balance/bank/list">详情</router-link></span>
+        <span style="float: right"><router-link to="/profile/balance/banklist">详情</router-link></span>
       </div>
-      <hr class="profile-hr"><br>
-      <div class="row">
-        <div class="col-md-3 bak" align="center">
-          <router-link to="/profile/balance/bank/input"><b style="font-size: xx-large">+</b><br>添加银行卡</router-link>
-        </div>
-      </div>
-      <!--todo yinhangka component-->
-    </div><br>
+      <hr class="profile-hr">
+      <br>
+      <!--<div class="row">-->
+        <!--<div v-for="b in bankCards" class="col-md-3 bak" align="center">-->
+        <bank-card align="center" :items="bankCards"></bank-card>
+        <!--<div class="bak-name">{{b.bankName}} - {{b.bankType}}</div>-->
+        <!--<div class="bak-num">{{b.cardNoHide}}</div>-->
+        <!--</div>-->
+        <!--<div class="col-md-3 bak" align="center">-->
+          <!--<router-link to="/profile/balance/bank/input"><b style="font-size: xx-large">+</b><br>添加银行卡</router-link>-->
+        <!--</div>-->
+      <!--</div>-->
+    </div>
+    <br>
     <div>
       <div><span class="profile-second-head">资金流水</span></div>
       <hr class="profile-hr">
@@ -40,10 +47,10 @@
         </thead>
         <tbody>
         <tr v-for="t in trade">
-          <td>{{t.time}}</td>
-          <td>{{t.type}}</td>
-          <td>{{t.num}}</td>
-          <td>{{t.status}}</td>
+          <td>{{t.addtime}}</td>
+          <td>{{t.reason}}</td>
+          <td>{{t.amount}}</td>
+          <td>交易成功</td>
         </tr>
         </tbody>
       </table>
@@ -62,18 +69,15 @@
     border: solid 1px black;
   }
 
-  .bak {
-    border: solid lightgrey 1px;
-    height: 80px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-  }
 </style>
 
 <script>
+  import bankCard from './BankCardItem.vue'
+  import { mapGetters } from 'vuex'
   export default{
+    components: {
+      bankCard
+    },
     data () {
       return {
         trade: [
@@ -84,15 +88,69 @@
             status: '交易成功'
           }
         ],
+        bankCards: [],
         model: {
-          total: 100000,
-          withdraw: 1000
+          amount: 100000,
+          withdrawAmount: 1000
         }
       }
     },
+    computed: {
+      ...mapGetters([
+        'token',
+        'username'
+      ])
+    },
     created: function () {
+      this.getBalance()
+      this.getBank()
+      this.getTrade()
     },
     methods: {
+      getBalance: function () {
+        this.$http.get('http://rest.' + this.isMirror + '.emulian.com/web/g/one/account.service', {
+          params: {
+            mbtoken: this.token,
+            v: 2.0,
+            userId: 730
+          }
+        }).then((response) => {
+          console.log(response.data.data)
+          this.model = response.data.data
+        }, (response) => {
+          // error callback
+        })
+      },
+      getBank: function () {
+        this.$http.get('http://rest.' + this.isMirror + '.emulian.com/na/g/lst/bankcard.service', {
+          params: {
+            userId: 730,
+            mbtoken: this.token
+          }
+        }).then((response) => {
+          console.log(response.data.data)
+          this.bankCards = response.data.data
+        }, (response) => {
+          // error callback
+        })
+      },
+      getTrade: function () {
+        this.$http.get('http://rest.' + this.isMirror + '.emulian.com/ios/g/lst/ledger.service', {
+          params: {
+            mbtoken: this.token,
+            mid: 2,
+            page: 1,
+            pageSize: 10,
+            userId: 730,
+            username: this.username
+          }
+        }).then((response) => {
+          console.log(response.data.data)
+          this.trade = response.data.data
+        }, (response) => {
+          // error callback
+        })
+      },
       withdraw: function () {
         this.$router.push('/profile/balance/withdraw/input')
       },

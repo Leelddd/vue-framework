@@ -182,8 +182,8 @@
         this.$http.get('http://rest.mirror.emulian.com/web/g/one/account.service', {
           params: {
             mbtoken: this.token,
-            v: 2.0,
-            userId: 730
+            v: this.version,
+            userId: this.uid
           }
         }).then((response) => {
           console.log(response.data.data)
@@ -193,6 +193,7 @@
         })
       },
       getTrade: function () {
+//        todo no url interface for this
       }
     }
   }
