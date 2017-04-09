@@ -62,7 +62,7 @@
       <span></span>
     </div>
     <div>
-      <button class="btn">下一步</button>
+      <button class="btn" v-on:click="store()"><router-link to="/profile/publish/provide/action/other">下一步</router-link></button>
     </div>
   </div>
 </template>
@@ -79,7 +79,16 @@
 </style>
 
 <script>
+  import { mapGetters, mapActions } from 'vuex'
   export default{
+    computed: {
+      ...mapGetters([
+        'token',
+        'username',
+        'uid',
+        'query'
+      ]),
+    },
     data () {
       return {
         model: {
@@ -106,6 +115,18 @@
     },
     created: function () {
     },
-    methods: {}
+    methods: {
+      ...mapActions([
+        'increment'
+      ]),
+
+      store:function () {
+        
+      },
+      
+      loadStore:function () {
+        
+      }
+    }
   }
 </script>

@@ -61,10 +61,10 @@ export default new Vuex.Store({
       order: {
         val: '我的订单',
         buy: {
-          val: '卖货订单'
+          val: '买货订单'
         },
         sell: {
-          val: '买货订单'
+          val: '卖货订单'
         }
       },
       notification: {

@@ -2,8 +2,15 @@
   <div>
     <div>
       <br>
-      <select>
-        <option></option>
+      <!--<select v-model="selected" >-->
+        <!--<option v-for="option in options" v-bind:value="option.value">-->
+          <!--{{ option.text }}-->
+
+      <select id="infoSelect" v-on:change="reload()">
+        <option value="1820">原木</option>
+        <option value="1830">锯材</option>
+        <option value="1880">人造板</option>
+        <option value="1890">景观木</option>
       </select>
       <br><br>
     </div>
@@ -21,12 +28,11 @@
         <tbody>
         <tr v-for="t in provideInfo">
           <td>
-            <img width="50" :src="t.img"/>
-            {{t.name}}
-
+            <!--<img width="50" :src="t.img"/>-->
+            {{t.catname}}
           </td>
-          <td>{{t.size}}</td>
-          <td>{{t.port}}</td>
+          <td>{{t.meta_list_name[0]}}:{{t.meta_list_value[0]}} {{t.meta_list_name[1]}}:{{t.meta_list_value[1]}}</td>
+          <td>{{t.meta_list_value[2]}}</td>
           <td>{{t.price}}</td>
           <td>
             <a>查看</a>
@@ -52,36 +58,61 @@
     border: solid lightgrey 1px;
     border-top: solid #63BB9C 3px;
   }
+
+  #infoSelect{
+    width:200px;
+  }
 </style>
 
 <script>
-  import page from './../Page.vue'
+  import { mapGetters } from 'vuex'
+  import page from '../Page.vue'
   export default{
+    catType:'1820',
     components: {
       page
     },
+    prop: ['id'],
+    computed: {
+      ...mapGetters([
+        'token',
+        'username',
+        'uid',
+      ])
+    },
     data () {
       return {
-        provideInfo: [
-          {
-            img: '/static/logos.png',
-            name: '原木樟子松',
-            size: '3.0*28*18',
-            port: '二连浩特',
-            price: 1440
-          },
-          {
-            img: '/static/logos.png',
-            name: '原木樟子松',
-            size: '3.0*28*18',
-            port: '二连浩特',
-            price: 1440
-          }
-        ]
+        provideInfo: []
       }
     },
     created: function () {
+      this.get()
     },
-    methods: {}
+    methods: {
+
+      reload:function () {
+        var select = document.getElementById('infoSelect')
+        var catType = select.options[select.selectedIndex].value
+        this.get(catType)
+      },
+
+      get: function (catType='1820') {
+        this.catType=catType
+        this.$http.get('http://rest.mirror.emulian.com/ios/g/lst/wgoods.service', {
+          params: {
+            mbtoken: this.token,
+            page: 1,
+            pagesize:10,
+            catId:this.catType,
+            v:'2.0'
+          }
+        }).then((response) => {
+          this.provideInfo = response.data.data
+        }, (response) => {
+          // error callback
+        })
+      }
+
+    }
   }
 </script>

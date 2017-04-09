@@ -100,13 +100,13 @@ const publishRouter = [
 ]
 
 const orderBuyDetailRouter = [
-  {name: 'info', path: 'info/:id', component: OrderBuyDetailInfo},
-  {name: 'load', path: 'load/:id', component: OrderBuyDetailLoad}
+  {name: 'bdinfo', path: 'info/:id', component: OrderBuyDetailInfo},
+  {name: 'bdload', path: 'load/:id', component: OrderBuyDetailLoad}
 ]
 
 const orderSellDetailRouter = [
-  {name: 'info', path: 'info/:id', component: OrderSellDetailInfo},
-  {name: 'load', path: 'load/:id', component: OrderSellDetailLoad}
+  {name: 'sdinfo', path: 'info/:id', component: OrderSellDetailInfo},
+  {name: 'sdload', path: 'load/:id', component: OrderSellDetailLoad}
 ]
 
 const orderRouter = [

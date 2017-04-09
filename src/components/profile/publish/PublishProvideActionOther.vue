@@ -72,7 +72,22 @@
 </style>
 
 <script>
+  import { mapGetters } from 'vuex'
+  import Vue from 'vue'
+  import Vuex from 'vuex'
+  Vue.use(Vuex)
   export default{
+    catType:'1820',
+    components: {
+    },
+    prop: ['id'],
+    computed: {
+      ...mapGetters([
+        'token',
+        'username',
+        'uid',
+      ])
+    },
     data () {
       return {
         model: {
@@ -96,7 +111,51 @@
       }
     },
     created: function () {
+      this.get()
     },
-    methods: {}
+    methods: {
+
+      get: function () {
+        this.catType=catType
+        this.$http.get('http://rest.mirror.emulian.com/ios/g/add/wgoods.service', {
+          params: {
+            mbtoken: this.token,
+            catId:'',
+            areaId:'',
+            userId:'',
+            pareaId:'',
+            price:'',
+            stockNum:'',
+            startSellNum:'',
+            introduce:'',
+            locationName:'',
+            specLength:'',
+            specDiameter:'',
+            carId :'',
+            rotten:'',
+            pocket:'',
+            knot:'',
+            wormhole:'',
+            blueStain:'',
+            newAndOld:'',
+            bark:'',
+            editor:'',
+            ip :'',
+            status:'',
+            linkUrl:'',
+            htis:'',
+            pay:'',
+            v:'2.0'
+          }
+        }).then((response) => {
+          this.provideInfo = response.data.data
+        }, (response) => {
+          // error callback
+        })
+      }
+
+    }
   }
 </script>
+
+

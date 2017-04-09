@@ -92,6 +92,14 @@
         this.show = 1
       }
     },
+    created: function () {
+      this.get()
+      if (this.$route.params.status === 'unread') {
+        this.show = 0
+      } else {
+        this.show = 1
+      }
+    },
     computed: {
       ...mapGetters([
         'token',

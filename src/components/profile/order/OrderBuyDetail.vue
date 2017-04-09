@@ -1,11 +1,11 @@
 <template>
   <div>
     <ul class="nav nav-pills">
-      <li :class="{active: navnow('detail') }">
-        <router-link to="/profile/order/buy/detail/info/1">订单详情</router-link>
+      <li :class="{active: navnow('bdinfo') }">
+        <router-link :to="{name: 'bdinfo', params:{id: $route.params.id}}" @click="go(0)">订单详情</router-link>
       </li>
-      <li :class="{active: navnow('load')}">
-        <router-link to="/profile/order/buy/detail/load/1">货运信息</router-link>
+      <li :class="{active: navnow('bdload')}">
+        <router-link :to="{name: 'bdload', params:{id: $route.params.id}}">货运信息</router-link>
       </li>
     </ul>
     <div class="remind">
@@ -84,8 +84,8 @@
     },
     methods: {
       navnow: function (str) {
-        return str === this.$route.params.filter
-      }
+        return str === this.$route.name
+      },
     }
   }
 </script>
